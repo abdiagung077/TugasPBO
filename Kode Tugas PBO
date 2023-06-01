@@ -1,0 +1,66 @@
+class Mahasiswa: # membuat kelas baru yaitu kelas Mahasiswa
+    def __init__(self, nama, npm, jurusan): # membuat parameter kelas Mahasiswa yaitu nama, npm, jurusan
+        self.nama = nama
+        self.npm = npm
+        self.jurusan = jurusan
+    
+    def tampilkan_info(self): # membuat subclass tampilkan_info yang menampilkan isi dari parameter nama, nim dan jurusan 
+        print("Nama: ", self.nama)
+        print("NPM: ", self.npm)
+        print("Jurusan: ", self.jurusan.NamaJurusan)
+
+
+class Jurusan: # membuat kelas baru dengan nama Jurusan
+    def __init__(self, nama_jurusan): # membuat parameter dari kelas Jurusan yaitu nama_jurusan
+        self.NamaJurusan = nama_jurusan
+        self.DaftarMahasiswa = []
+    
+    def tambah_mahasiswa(self, mahasiswa): # membuat kode untuk menambahkan data mahasiswa
+        self.DaftarMahasiswa.append(mahasiswa)
+    
+    def tampilkan_daftar_mahasiswa(self): # membuat subclass untuk menambahkan data mahasiswa berupa Nama Mahasiswa dan NPM
+        print("Daftar Mahasiswa di Jurusan", self.NamaJurusan)
+        for mahasiswa in self.DaftarMahasiswa: # Membuat perulangan menggunakan for dengan kondisi tertentu
+            print("\n<><><><><><><><><><><><><><>")
+            print("\nNama: ", mahasiswa.nama)
+            print("NPM: ", mahasiswa.npm)
+            
+
+
+class Universitas: # membuat kelas baru dengan nama Universitas
+    def __init__(self, nama_universitas): # membuat parameter kelas Universitas yaitu nama_universitas
+        self.NamaUniversitas = nama_universitas
+        self.DaftarJurusan = []
+    
+    def tambah_jurusan(self, jurusan): # membuat parameter baru dengan nama jurusan
+        self.DaftarJurusan.append(jurusan)
+    
+    def tampilkan_daftar_jurusan(self): # membuat subclass baru untuk menampilkan data jurusan
+        print("\nDaftar Jurusan di ", self.NamaUniversitas)
+        for jurusan in self.DaftarJurusan:
+            print("Nama Jurusan: ", jurusan.NamaJurusan) #menampilkan data jurusan yang telah dimasukkan
+            print("<><><><><><><><><><><><><><>")
+
+
+# Membuat objek Universitas A dengan meminta masukan user
+nama_universitas = input("Masukkan nama universitas: ")
+universitas_a = Universitas(nama_universitas)
+
+# Membuat objek Jurusan yang meminta masukan user dan menambahkannya ke dalam Universitas A
+nama_jurusan = input("Masukkan nama jurusan: ")
+jurusan_b = Jurusan(nama_jurusan)
+universitas_a.tambah_jurusan(jurusan_b)
+
+# Memasukkan data mahasiswa ke dalam Jurusan dengan menggunakan perulangan for di Universitas A
+jumlah_mahasiswa = int(input("Masukkan jumlah mahasiswa: "))
+for i in range(jumlah_mahasiswa):
+    nama_mahasiswa = input("Masukkan nama mahasiswa: ")
+    npm_mahasiswa = input("Masukkan NPM mahasiswa: ")
+    mahasiswa = Mahasiswa(nama_mahasiswa, npm_mahasiswa, jurusan_b)
+    jurusan_b.tambah_mahasiswa(mahasiswa)
+
+# Menampilkan daftar jurusan di Universitas A
+universitas_a.tampilkan_daftar_jurusan()
+
+# Menampilkan daftar mahasiswa yang terdaftar dalam Kelas Jurusan  di Kelas Universitas 
+jurusan_b.tampilkan_daftar_mahasiswa()
