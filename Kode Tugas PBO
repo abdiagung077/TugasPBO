@@ -34,7 +34,6 @@ class Universitas:# membuat kelas baru dengan nama Universitas
         for jurusan in self.daftar_jurusan:
             print("#", jurusan.nama_jurusan) 
 
-
 universitas_xyz = Universitas("XYZ University")# Membuat objek Universitas XYZ
 
 jurusan_ti = Jurusan("Teknik Informatika") # menambahkan objek baru yaitu jurusan
