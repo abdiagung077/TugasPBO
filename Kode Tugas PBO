@@ -32,7 +32,7 @@ class Universitas:# membuat kelas baru dengan nama Universitas
     def tampilkan_daftar_jurusan(self): # digunakan untuk menampilkan daftar jurusan yang ada di universitas
         print("\nDaftar Jurusan di Universitas", self.nama_universitas) 
         for jurusan in self.daftar_jurusan:
-            print("*", jurusan.nama_jurusan) 
+            print("#", jurusan.nama_jurusan) 
 
 
 universitas_xyz = Universitas("XYZ University")# Membuat objek Universitas XYZ
@@ -57,7 +57,6 @@ for jurusan in universitas_xyz.daftar_jurusan:
     if jurusan.nama_jurusan == pilih_jurusan: 
         jurusan_dipilih = jurusan 
 
-
 if jurusan_dipilih: #jika bernilai true atau jurusan ada pada daftar jurusan maka
     nama_mahasiswa = input("Masukkan nama mahasiswa: ") # meminta data nama Mahasiswa
     npm_mahasiswa = input("Masukkan NPM mahasiswa: ") # meminta data NPM Mahasiswa
@@ -67,6 +66,5 @@ if jurusan_dipilih: #jika bernilai true atau jurusan ada pada daftar jurusan mak
 
     # Menampilkan daftar mahasiswa yang terdaftar dalam Jurusan terpilih di Universitas XYZ
     jurusan_dipilih.tampilkan_daftar_mahasiswa() # memanggil metode tampilkan_daftar_mahasiswa 
-
 else:
     print("Jurusan tidak ditemukan.") # kondisi apabila  false atau jurusan tidak ada pada daftar jurusan
