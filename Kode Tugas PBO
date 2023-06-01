@@ -1,66 +1,72 @@
-class Mahasiswa: # membuat kelas baru yaitu kelas Mahasiswa
-    def __init__(self, nama, npm, jurusan): # membuat parameter kelas Mahasiswa yaitu nama, npm, jurusan
-        self.nama = nama
-        self.npm = npm
-        self.jurusan = jurusan
+class Mahasiswa: # membuat kelas baru dengan nama Mahasiswa
+    def __init__(self, nama, npm, jurusan): # membuat parameter dengan nama: nama, npm, jurusan  
+        self.nama = nama 
+        self.npm = npm  
+        self.jurusan = jurusan 
     
-    def tampilkan_info(self): # membuat subclass tampilkan_info yang menampilkan isi dari parameter nama, nim dan jurusan 
-        print("Nama: ", self.nama)
-        print("NPM: ", self.npm)
-        print("Jurusan: ", self.jurusan.NamaJurusan)
+    def tampilkan_info(self): # method untuk menampilkan informasi yang berisi nama dan npm
+        print("Nama    :", self.nama) 
+        print("NPM     :", self.npm) 
 
-
-class Jurusan: # membuat kelas baru dengan nama Jurusan
-    def __init__(self, nama_jurusan): # membuat parameter dari kelas Jurusan yaitu nama_jurusan
-        self.NamaJurusan = nama_jurusan
-        self.DaftarMahasiswa = []
+class Jurusan: # # membuat parameter dengan nama nama_jurusan 
+    def __init__(self, nama_jurusan): # membuat parameter dengan nama nama_jurusan
+        self.nama_jurusan = nama_jurusan 
+        self.daftar_mahasiswa = []  
     
-    def tambah_mahasiswa(self, mahasiswa): # membuat kode untuk menambahkan data mahasiswa
-        self.DaftarMahasiswa.append(mahasiswa)
+    def tambah_mahasiswa(self, mahasiswa): # metode yang digunakan untuk menambahkan objek mahasiswa ke dalam daftar mahasiswa jurusan.
+        self.daftar_mahasiswa.append(mahasiswa) 
     
-    def tampilkan_daftar_mahasiswa(self): # membuat subclass untuk menambahkan data mahasiswa berupa Nama Mahasiswa dan NPM
-        print("Daftar Mahasiswa di Jurusan", self.NamaJurusan)
-        for mahasiswa in self.DaftarMahasiswa: # Membuat perulangan menggunakan for dengan kondisi tertentu
-            print("\n<><><><><><><><><><><><><><>")
-            print("\nNama: ", mahasiswa.nama)
-            print("NPM: ", mahasiswa.npm)
-            
+    def tampilkan_daftar_mahasiswa(self): #metode yang digunakan untuk menampilkan daftar mahasiswa yang terdaftar dalam jurusan yang terdaftar
+        print("\nDaftar Mahasiswa di Jurusan", self.nama_jurusan)
+        for mahasiswa in self.daftar_mahasiswa: 
+            mahasiswa.tampilkan_info() 
 
-
-class Universitas: # membuat kelas baru dengan nama Universitas
-    def __init__(self, nama_universitas): # membuat parameter kelas Universitas yaitu nama_universitas
-        self.NamaUniversitas = nama_universitas
-        self.DaftarJurusan = []
+class Universitas:# membuat kelas baru dengan nama Universitas
+    def __init__(self, nama_universitas): # membuat parameter kelas Universitas yang berisi nama_Universitas
+        self.nama_universitas = nama_universitas
+        self.daftar_jurusan = []  
     
-    def tambah_jurusan(self, jurusan): # membuat parameter baru dengan nama jurusan
-        self.DaftarJurusan.append(jurusan)
+    def tambah_jurusan(self, jurusan): # Metode yang digunakan untuk menambahkan objek jurusan ke dalam daftar jurusan universitas.
+        self.daftar_jurusan.append(jurusan) 
     
-    def tampilkan_daftar_jurusan(self): # membuat subclass baru untuk menampilkan data jurusan
-        print("\nDaftar Jurusan di ", self.NamaUniversitas)
-        for jurusan in self.DaftarJurusan:
-            print("Nama Jurusan: ", jurusan.NamaJurusan) #menampilkan data jurusan yang telah dimasukkan
-            print("<><><><><><><><><><><><><><>")
+    def tampilkan_daftar_jurusan(self): # digunakan untuk menampilkan daftar jurusan yang ada di universitas
+        print("\nDaftar Jurusan di Universitas", self.nama_universitas) 
+        for jurusan in self.daftar_jurusan:
+            print("*", jurusan.nama_jurusan) 
 
 
-# Membuat objek Universitas A dengan meminta masukan user
-nama_universitas = input("Masukkan nama universitas: ")
-universitas_a = Universitas(nama_universitas)
+universitas_xyz = Universitas("XYZ University")# Membuat objek Universitas XYZ
 
-# Membuat objek Jurusan yang meminta masukan user dan menambahkannya ke dalam Universitas A
-nama_jurusan = input("Masukkan nama jurusan: ")
-jurusan_b = Jurusan(nama_jurusan)
-universitas_a.tambah_jurusan(jurusan_b)
+jurusan_ti = Jurusan("Teknik Informatika") # menambahkan objek baru yaitu jurusan
+jurusan_tm = Jurusan("Teknik Mesin")
+jurusan_ars = Jurusan("Arsitektur")
+jurusan_te= Jurusan("Teknik Elektro")
+jurusan_si = Jurusan("Sistem Informasi")
+jurusan_ts = Jurusan("Teknik Sipil")
+universitas_xyz.tambah_jurusan(jurusan_ti) # menambahkan jurusan yang dibuat ke dalam universitas xyz
+universitas_xyz.tambah_jurusan(jurusan_tm) 
+universitas_xyz.tambah_jurusan(jurusan_ars)
+universitas_xyz.tambah_jurusan(jurusan_te)
+universitas_xyz.tambah_jurusan(jurusan_si)
+universitas_xyz.tambah_jurusan(jurusan_ts)
 
-# Memasukkan data mahasiswa ke dalam Jurusan dengan menggunakan perulangan for di Universitas A
-jumlah_mahasiswa = int(input("Masukkan jumlah mahasiswa: "))
-for i in range(jumlah_mahasiswa):
-    nama_mahasiswa = input("Masukkan nama mahasiswa: ")
-    npm_mahasiswa = input("Masukkan NPM mahasiswa: ")
-    mahasiswa = Mahasiswa(nama_mahasiswa, npm_mahasiswa, jurusan_b)
-    jurusan_b.tambah_mahasiswa(mahasiswa)
+universitas_xyz.tampilkan_daftar_jurusan() # Menampilkan daftar jurusan yang ada di Universitas XYZ
 
-# Menampilkan daftar jurusan di Universitas A
-universitas_a.tampilkan_daftar_jurusan()
+pilih_jurusan = input("\nMasukkan nama jurusan yang dipilih: ")# Memilih jurusan sesuai daftar jurusan yang tersedia
+for jurusan in universitas_xyz.daftar_jurusan: 
+    if jurusan.nama_jurusan == pilih_jurusan: 
+        jurusan_dipilih = jurusan 
 
-# Menampilkan daftar mahasiswa yang terdaftar dalam Kelas Jurusan  di Kelas Universitas 
-jurusan_b.tampilkan_daftar_mahasiswa()
+
+if jurusan_dipilih: #jika bernilai true atau jurusan ada pada daftar jurusan maka
+    nama_mahasiswa = input("Masukkan nama mahasiswa: ") # meminta data nama Mahasiswa
+    npm_mahasiswa = input("Masukkan NPM mahasiswa: ") # meminta data NPM Mahasiswa
+
+    data_mahasiswa = Mahasiswa(nama_mahasiswa, npm_mahasiswa, jurusan_dipilih) # Membuat objek Mahasiswa dengan meminta masukkan dari user
+    jurusan_dipilih.tambah_mahasiswa(data_mahasiswa) # menambahkan objek mahasiswa tersebut ke dalam jurusan terpilih
+
+    # Menampilkan daftar mahasiswa yang terdaftar dalam Jurusan terpilih di Universitas XYZ
+    jurusan_dipilih.tampilkan_daftar_mahasiswa() # memanggil metode tampilkan_daftar_mahasiswa 
+
+else:
+    print("Jurusan tidak ditemukan.") # kondisi apabila  false atau jurusan tidak ada pada daftar jurusan
